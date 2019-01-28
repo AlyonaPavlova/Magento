@@ -1,6 +1,7 @@
 <?php
 return [
     'modules' => [
+        '1C_ModuleTradeManagement' => 1,
         'Magento_Store' => 1,
         'Magento_Directory' => 1,
         'Magento_Theme' => 1,

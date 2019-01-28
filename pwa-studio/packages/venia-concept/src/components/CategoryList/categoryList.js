@@ -2,9 +2,11 @@ import { Component, createElement } from 'react';
 import { string, number, shape } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
+import Banner from 'src/components/Banner';
 import gql from 'graphql-tag';
 import classify from 'src/classify';
 import defaultClasses from './categoryList.css';
+// import Banner from '../Banner/banner';
 
 // TODO: get only active categories from graphql when it is ready
 const categoryListQuery = gql`
@@ -55,46 +57,7 @@ class CategoryList extends Component {
         const { id, classes } = this.props;
 
         return (
-            <div className={classes.root}>
-                {this.header}
-                <Query query={categoryListQuery} variables={{ id }}>
-                    {({ loading, error, data }) => {
-                        if (error) return <div>Data Fetch Error</div>;
-                        if (loading) return <div>Fetching Data</div>;
-                        if (data.category.children == '')
-                            return <div>Here are not any child categories</div>;
-
-                        return (
-                            <div className={classes.content}>
-                                {data.category.children.map((item, index) => (
-                                    <Link
-                                        className={classes.item}
-                                        to={`/${
-                                            item.url_key
-                                        }${categoryUrlSuffix}`}
-                                        key={index}
-                                    >
-                                        <span className={classes.imageWrapper}>
-                                            {item.image && (
-                                                <img
-                                                    className={classes.image}
-                                                    src={`/pub/media/catalog/category/${
-                                                        item.image
-                                                    }`}
-                                                    alt={item.name}
-                                                />
-                                            )}
-                                        </span>
-                                        <span className={classes.name}>
-                                            {item.name}
-                                        </span>
-                                    </Link>
-                                ))}
-                            </div>
-                        );
-                    }}
-                </Query>
-            </div>
+            <Banner>test text</Banner>
         );
     }
 }
