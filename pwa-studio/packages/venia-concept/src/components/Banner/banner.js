@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import classify from 'src/classify';
-import defaultClasses from './banner.css';
+// import defaultClasses from './banner.css';
 
 class Banner extends Component {
 
@@ -27,4 +27,4 @@ class Banner extends Component {
     }
 }
 
-export default classify(defaultClasses)(Banner);
+export default classify()(Banner);

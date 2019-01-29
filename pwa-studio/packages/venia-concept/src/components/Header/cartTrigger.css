@@ -1,5 +1,6 @@
 .root {
     composes: root from '../clickable.css';
-    height: 3rem;
-    width: 3rem;
+    height: 1.5rem;
+    font-family: 'Rubik', sans-serif;
+    /* width: 3rem; */
 }

@@ -32,6 +32,7 @@ export default function resolveUnknownRoute(opts) {
  * @returns {Promise<{type: "PRODUCT" | "CATEGORY" | "CMS_PAGE"}>}
  */
 function remotelyResolveRoute(opts) {
+    console.log(opts);
     const url = new URL('/graphql', opts.apiBase);
     return fetch(url, {
         method: 'POST',

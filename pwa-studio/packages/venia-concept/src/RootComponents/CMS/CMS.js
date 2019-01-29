@@ -1,12 +1,16 @@
 import { createElement, Component } from 'react';
 import Page from 'src/components/Page';
-import CategoryList from 'src/components/CategoryList';
+import Banner from 'src/components/Banner';
+import Button from 'src/components/Button';
+import Content from 'src/components/Content';
 
 export default class CMS extends Component {
     render() {
         return (
             <Page>
-                <CategoryList title="Shop by category" id={2} />
+                <Banner></Banner>
+                {/* <Button>test button</Button> */}
+                {/* <Content></Content> */}
             </Page>
         );
     }

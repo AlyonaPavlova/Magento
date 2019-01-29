@@ -8,6 +8,7 @@ import CartTrigger from './cartTrigger';
 import NavTrigger from './navTrigger';
 import defaultClasses from './header.css';
 import logo from './logo.svg';
+import CategoryList from 'src/components/CategoryList';
 
 class Header extends Component {
     static propTypes = {
@@ -116,8 +117,9 @@ class Header extends Component {
                                                 <div class="cart_count"><span>10</span></div>
                                             </div>
                                             <div class="cart_content">
-                                                {/* <div class="cart_text"><a href="#">Cart</a></div> */}
-                                                <Link to="/cart" className={classes.cartTrigger}>Cart</Link>
+                                                <div class="cart_text">
+                                                    <CartTrigger><a href="#">Cart</a></CartTrigger>
+                                                </div>
                                                 <div class="cart_price">$85</div>
                                             </div>
                                         </div>
@@ -133,41 +135,7 @@ class Header extends Component {
                             <div class="col">
                              
                                 <div class="main_nav_content d-flex flex-row">
-
-                                    <div class="cat_menu_container">
-                                        <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-                                            <div class="cat_burger"><span></span><span></span><span></span></div>
-                                            <div class="cat_menu_text">categories</div>
-                                        </div>
-
-                                        <ul class="cat_menu">
-                                            <li><a href="#">Computers and Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-                                            <li><a href="#">Cameras and Photos<i class="fas fa-chevron-right"></i></a></li>
-                                            <li class="hassubs">
-                                                <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-                                                <ul>
-                                                    <li class="hassubs">
-                                                        <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                                        <ul>
-                                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Smartphones and Tablets<i class="fas fa-chevron-right"></i></a></li>
-                                            <li><a href="#">TV and Audio<i class="fas fa-chevron-right"></i></a></li>
-                                            <li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-                                            <li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-                                            <li><a href="#">Video Games and Consoles<i class="fas fa-chevron-right"></i></a></li>
-                                            <li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
-                                        </ul>
-                                    </div>
+                                    <CategoryList title="categories"/>
 
                                     <div class="main_nav_menu ml-auto">
                                         <ul class="standard_dropdown main_nav_dropdown">
@@ -318,7 +286,7 @@ class Header extends Component {
                         </div>
                     </div>
                 </div>
-	        </header>
+            </header>
         );
     }
 }
