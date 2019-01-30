@@ -20,7 +20,7 @@ class Main extends Component {
         const className = isMasked ? classes.root_masked : classes.root;
 
         return (
-            <main className={className}>
+            <main class="super_container">
                 <Header />
                 {children}
                 <Footer />

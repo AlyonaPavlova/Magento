@@ -9,8 +9,7 @@ export default class CMS extends Component {
         return (
             <Page>
                 <Banner></Banner>
-                {/* <Button>test button</Button> */}
-                {/* <Content></Content> */}
+                <Content></Content>
             </Page>
         );
     }

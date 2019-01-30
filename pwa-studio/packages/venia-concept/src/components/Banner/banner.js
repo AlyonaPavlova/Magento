@@ -1,6 +1,5 @@
-import { Component } from 'react';
+import { Component, createElement } from 'react';
 import classify from 'src/classify';
-// import defaultClasses from './banner.css';
 
 class Banner extends Component {
 
