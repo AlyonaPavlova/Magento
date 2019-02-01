@@ -1,4 +1,4 @@
-import { Component, createElement } from 'react';
+import React, { Component, createElement } from 'react';
 import { arrayOf, string, number, shape } from 'prop-types';
 import fixedObserver from 'src/util/fixedObserver';
 import initObserver from 'src/util/initObserver';
@@ -6,6 +6,8 @@ import GalleryItem from './item';
 import getUrlKey from 'src/util/getUrlKey';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import Slider from "react-slick";
+import reactDom from 'react-dom';
 
 const productDetailQuery = gql`
     query productDetail($urlKey: String) {
@@ -48,6 +50,17 @@ const initState = (prevState, { items }) => ({
     collection: createCollection(items.length),
     done: false
 });
+
+const settings = {
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    rows: 2,
+    dots: true,
+    // slidesPerRow: 2,
+    // centerMode: true,
+    infinite: true,
+    speed: 500,
+};
 
 class GalleryItems extends Component {
     static propTypes = {
@@ -103,17 +116,21 @@ class GalleryItems extends Component {
 
                     const product = data.productDetail.items[0];
 
-                    return items.map(item => (
-                            <GalleryItem
-                            product={product}
-                            key={item.id}
-                            item={item}
-                            showImage={done}
-                            onLoad={this.handleLoad}
-                            onError={this.handleError}
-                            addToCart={this.props.addToCart}
-                            />
-                        ));
+                    return (
+                        <Slider {...settings}>
+                            {items.map(item => (
+                                <GalleryItem
+                                    product={product}
+                                    key={item.id}
+                                    item={item}
+                                    showImage={done}
+                                    onLoad={this.handleLoad}
+                                    onError={this.handleError}
+                                    addToCart={this.props.addToCart}
+                                />
+                            ))}
+                        </Slider>
+                    );
                 }}
             </Query>
         );

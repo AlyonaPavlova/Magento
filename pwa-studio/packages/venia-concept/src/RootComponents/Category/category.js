@@ -1,4 +1,4 @@
-import { Component, createElement } from 'react';
+import React, { Component, createElement } from 'react';
 import { string, number, shape } from 'prop-types';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -69,11 +69,13 @@ class Category extends Component {
                     if (loading) return <div>Fetching Data</div>;
 
                     return (
-                        <Gallery
-                            data={data.category.products.items}
-                            title={data.category.description}
-                            addToCart={this.props.addItemToCart}
-                        />
+                        <div>
+                            <Gallery
+                                data={data.category.products.items}
+                                title={data.category.description}
+                                addToCart={this.props.addItemToCart}
+                            />
+                        </div>
                     );
                 }}
             </Query>

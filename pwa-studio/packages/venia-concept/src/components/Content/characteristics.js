@@ -1,42 +1,42 @@
 import React, {createElement} from 'react';
 
 export default () => (
-    <div class="characteristics">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="images/char_1.png" alt=""/></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
+    <div className="characteristics">
+        <div className="container">
+            <div className="row">
+                <div className="col-lg-3 col-md-6 char_col">
+                    <div className="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div className="char_icon"><img src="images/char_1.png" alt=""/></div>
+                        <div className="char_content">
+                            <div className="char_title">Free Delivery</div>
+                            <div className="char_subtitle">from $50</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="images/char_2.png" alt=""/></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
+                <div className="col-lg-3 col-md-6 char_col">
+                    <div className="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div className="char_icon"><img src="images/char_2.png" alt=""/></div>
+                        <div className="char_content">
+                            <div className="char_title">Free Delivery</div>
+                            <div className="char_subtitle">from $50</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="images/char_3.png" alt=""/></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
+                <div className="col-lg-3 col-md-6 char_col">
+                    <div className="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div className="char_icon"><img src="images/char_3.png" alt=""/></div>
+                        <div className="char_content">
+                            <div className="char_title">Free Delivery</div>
+                            <div className="char_subtitle">from $50</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="images/char_4.png" alt=""/></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
+                <div className="col-lg-3 col-md-6 char_col">
+                    <div className="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div className="char_icon"><img src="images/char_4.png" alt=""/></div>
+                        <div className="char_content">
+                            <div className="char_title">Free Delivery</div>
+                            <div className="char_subtitle">from $50</div>
                         </div>
                     </div>
                 </div>

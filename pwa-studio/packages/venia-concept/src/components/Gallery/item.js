@@ -9,6 +9,9 @@ import defaultClasses from './item.css';
 import Button from 'src/components/Button';
 import { addItemToCart } from 'src/actions/cart';
 
+import slider from './slider';
+import slick from './slick-1.8.0/slick'
+
 const imageWidth = '300';
 const imageHeight = '372';
 
@@ -24,6 +27,15 @@ const ItemPlaceholder = ({ children, classes }) => (
 const productUrlSuffix = '.html';
 
 class GalleryItem extends Component {
+    componentDidMount() {
+        slider(this.node);
+        // slick();
+    }
+
+    saveNode = node => {
+        this.node = node
+    }
+    
     static propTypes = {
         classes: shape({
             image: string,
@@ -88,7 +100,7 @@ class GalleryItem extends Component {
         const productLink = `/${url_key}${productUrlSuffix}`;
 
         return (
-            <div className="featured_slider_item">
+            <div className="featured_slider_item" ref={this.saveNode}>
                 <div className="border_active"></div>
                 <div className="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
                     <div className="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/featured_1.png" alt=""/></div>
@@ -97,16 +109,18 @@ class GalleryItem extends Component {
                             {price.regularPrice.amount.value}{price.regularPrice.amount.currency}
                         </div>
                         <div className="product_name"><div><a href="product.html">{name}</a></div></div>
-                        <Button onClick={this.addToCart}>
+                        {/* <Button className="product_cart_button" onClick={this.addToCart}>
                             <span>Add to Cart</span>
-                        </Button>
+                        </Button> */}
                         <div className="product_extras">
                             <div className="product_color">
-                                <input type="radio" checked name="product_color"/>
+                                <input type="radio" name="product_color"/>
                                 <input type="radio" name="product_color"/>
                                 <input type="radio" name="product_color"/>
                             </div>
-                            <button className="product_cart_button">Add to Cart</button>
+                            <button className="product_cart_button" onClick={this.addToCart}>
+                                <span>Add to Cart</span>
+                            </button>
                         </div>
                     </div>
                     <div className="product_fav"><i className="fas fa-heart"></i></div>

@@ -48,19 +48,19 @@ const categoryQuery = gql`
 
 class Content extends Component {
 
-    componentDidMount() {
-        tabs(this.node);
-        slider(this.node);
-    }
+    // componentDidMount() {
+    //     tabs(this.node);
+    //     slider(this.node);
+    // }
 
-    saveNode = node => {
-        this.node = node
-    }
+    // saveNode = node => {
+    //     this.node = node
+    // }
 
-    addToCart = async (item, quantity) => {
-        const { guestCartId } = this.props;
-        await this.props.addItemToCart({ guestCartId, item, quantity });
-    };
+    // addToCart = async (item, quantity) => {
+    //     const { guestCartId } = this.props;
+    //     await this.props.addItemToCart({ guestCartId, item, quantity });
+    // };
 
     render() {
         return (
@@ -126,10 +126,7 @@ class Content extends Component {
                                             ));
                                     }}
                                 </Query> */}
-                                <Featured 
-                                addToCart={this.props.addToCart}
-
-                                />
+                                <Featured />
                                 {/* <Category /> */}
                             </div>
                         </div>
@@ -266,12 +263,12 @@ class Content extends Component {
     }
 }
 
-const mapDispatchToProps = {
-    addItemToCart
-};
+// const mapDispatchToProps = {
+//     addItemToCart
+// };
 
-export default connect(
-    null,
-    mapDispatchToProps
-)(Content);
-// export default classify(defaultClasses)(Content);
+// export default connect(
+//     null,
+//     mapDispatchToProps
+// )(Content);
+export default classify(defaultClasses)(Content);

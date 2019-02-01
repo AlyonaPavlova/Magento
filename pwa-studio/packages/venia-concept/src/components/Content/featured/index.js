@@ -3,42 +3,20 @@ import tabs from './tabs';
 import slider from './slider';
 
 import Category from 'src/RootComponents/Category';
-import Button from 'src/components/Button';
 
 class Featured extends Component {
     componentDidMount() {
         tabs(this.node);
-        slider(this.node);
+		// slider(this.node);
     }
 
     saveNode = node => {
         this.node = node
-    }
-
-	state = { quantity: 1 };
-
-	setQuantity = quantity => this.setState({ quantity });
-	
-	addToCart = () =>
-	this.props.addToCart({
-		item: this.props.product,
-		quantity: this.state.quantity
-	});
+	}
 
     render() {
-		const { classes, item } = this.props;
-		const name = 'Huawei MediaPad...';
-		const price = {
-			regularPrice : {
-				amount : {
-					value: 250,
-					currency: '$',
-				}
-			}
-		}
-		// const { name, price, url_key } = item;
         return(
-            <div className="featured">
+            <div className="featured" ref={this.saveNode}>
                 <div className="tabbed_container">
                     <div className="tabs">
                         <ul className="clearfix">
@@ -440,13 +418,6 @@ class Featured extends Component {
                         </div>
                         <div className="featured_slider_dots_cover"></div>
                     </div>
-					{/* <Category /> */}
-                    {/* <div className="product_panel panel active">
-                        <div className="featured_slider slider">
-                            <Category />
-                        </div>
-                        <div className="featured_slider_dots_cover"></div>
-                    </div> */}
                 </div>
             </div>
         )
