@@ -6,6 +6,8 @@ import classify from 'src/classify';
 import { transparentPlaceholder } from 'src/shared/images';
 import { makeProductMediaPath } from 'src/util/makeMediaPath';
 import defaultClasses from './item.css';
+import Button from 'src/components/Button';
+import { addItemToCart } from 'src/actions/cart';
 
 const imageWidth = '300';
 const imageHeight = '372';
@@ -61,6 +63,16 @@ class GalleryItem extends Component {
         onLoad: () => {}
     };
 
+    state = { quantity: 1 };
+
+    setQuantity = quantity => this.setState({ quantity });
+
+    addToCart = () =>
+        this.props.addToCart({
+            item: this.props.product,
+            quantity: this.state.quantity
+        });
+
     render() {
         const { classes, item } = this.props;
 
@@ -76,21 +88,49 @@ class GalleryItem extends Component {
         const productLink = `/${url_key}${productUrlSuffix}`;
 
         return (
-            <div className={classes.root}>
-                <Link to={productLink} className={classes.images}>
-                    {this.renderImagePlaceholder()}
-                    {this.renderImage()}
-                </Link>
-                <Link to={productLink} className={classes.name}>
-                    <span>{name}</span>
-                </Link>
-                <div className={classes.price}>
-                    <Price
-                        value={price.regularPrice.amount.value}
-                        currencyCode={price.regularPrice.amount.currency}
-                    />
+            <div className="featured_slider_item">
+                <div className="border_active"></div>
+                <div className="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                    <div className="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/featured_1.png" alt=""/></div>
+                    <div className="product_content">
+                        <div className="product_price discount" className={classes.price}>
+                            {price.regularPrice.amount.value}{price.regularPrice.amount.currency}
+                        </div>
+                        <div className="product_name"><div><a href="product.html">{name}</a></div></div>
+                        <Button onClick={this.addToCart}>
+                            <span>Add to Cart</span>
+                        </Button>
+                        <div className="product_extras">
+                            <div className="product_color">
+                                <input type="radio" checked name="product_color"/>
+                                <input type="radio" name="product_color"/>
+                                <input type="radio" name="product_color"/>
+                            </div>
+                            <button className="product_cart_button">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div className="product_fav"><i className="fas fa-heart"></i></div>
+                    <ul className="product_marks">
+                        <li className="product_mark product_discount">-25%</li>
+                        <li className="product_mark product_new">new</li>
+                    </ul>
                 </div>
             </div>
+            // <div className={classes.root}>
+            //     <Link to={productLink} className={classes.images}>
+            //         {this.renderImagePlaceholder()}
+            //         {this.renderImage()}
+            //     </Link>
+            //     <Link to={productLink} className={classes.name}>
+            //         <span>{name}</span>
+            //     </Link>
+            //     <div className={classes.price}>
+            //         <Price
+            //             value={price.regularPrice.amount.value}
+            //             currencyCode={price.regularPrice.amount.currency}
+            //         />
+            //     </div>
+            // </div>
         );
     }
 

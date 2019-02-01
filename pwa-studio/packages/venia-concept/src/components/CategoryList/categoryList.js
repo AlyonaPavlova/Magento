@@ -55,12 +55,12 @@ class CategoryList extends Component {
         const { id, title } = this.props;
 
         return (
-            <div class="cat_menu_container">
-                <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-                    <div class="cat_burger"><span></span><span></span><span></span></div>
-                    <div class="cat_menu_text">{title}</div>
+            <div className="cat_menu_container">
+                <div className="cat_menu_title d-flex flex-row align-items-center justify-content-start">
+                    <div className="cat_burger"><span></span><span></span><span></span></div>
+                    <div className="cat_menu_text">{title}</div>
                 </div>
-                <ul class="cat_menu">
+                <ul className="cat_menu">
                     <Query query={categoryListQuery} variables={{ id }}>	
                         {({ loading, error, data }) => {	
                             if (error) return <div>Data Fetch Error</div>;	
@@ -68,18 +68,18 @@ class CategoryList extends Component {
                             if (data.category.children == '')	
                                 return <div>Here are not any child categories</div>;	
 
-                            return (	
-                                <div>	
-                                    {data.category.children.map((item) => (	
+                            return data.category.children.map((item, index) => (	
                                         <li>
-                                            <a href={`/${item.url_key}${categoryUrlSuffix}`}>
+                                            <Link key={index} to={`/${item.url_key}${categoryUrlSuffix}`}>
                                                 {item.name}
-                                                <i class="fas fa-chevron-right"></i>
-                                            </a>
+                                                <i className="fas fa-chevron-right"></i>
+                                            </Link>
+                                            {/* <a href={`/${item.url_key}${categoryUrlSuffix}`}>
+                                                {item.name}
+                                                <i className="fas fa-chevron-right"></i>
+                                            </a> */}
                                         </li>
-                                    ))}	
-                                </div>	
-                            );	
+                                    ));	
                         }}	
                     </Query>
                 </ul>

@@ -57,8 +57,6 @@ export default class MagentoRouteHandler extends Component {
             })
             .catch(err => {
                 console.log('Routing resolve failed\n', err);
-                console.log(pathname);
-                console.log(this.props);
             });
     }
 

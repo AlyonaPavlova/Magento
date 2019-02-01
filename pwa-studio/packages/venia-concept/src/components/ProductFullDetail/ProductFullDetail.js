@@ -65,6 +65,32 @@ class ProductFullDetail extends Component {
         const { regularPrice } = product.price;
 
         return (
+            // <div class="featured_slider_item">
+            //     <div class="border_active"></div>
+            //     <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
+            //         <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/featured_1.png" alt=""/></div>
+            //         <div class="product_content">
+            //             <div class="product_price discount">{regularPrice.amount.value}</div>
+            //             <div class="product_name"><div><a href="product.html">{product.name}</a></div></div>
+            //             <Button onClick={this.addToCart}>
+            //                 <span>Add to Cart</span>
+            //             </Button>
+            //             <div class="product_extras">
+            //                 <div class="product_color">
+            //                     <input type="radio" checked name="product_color"/>
+            //                     <input type="radio" name="product_color"/>
+            //                     <input type="radio" name="product_color"/>
+            //                 </div>
+            //                 <button class="product_cart_button">Add to Cart</button>
+            //             </div>
+            //         </div>
+            //         <div class="product_fav"><i class="fas fa-heart"></i></div>
+            //         <ul class="product_marks">
+            //             <li class="product_mark product_discount">-25%</li>
+            //             <li class="product_mark product_new">new</li>
+            //         </ul>
+            //     </div>
+            // </div>
             <article className={classes.root}>
                 <section className={classes.title}>
                     <h1 className={classes.productName}>

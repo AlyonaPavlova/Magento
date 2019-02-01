@@ -3,6 +3,35 @@ import { arrayOf, string, number, shape } from 'prop-types';
 import fixedObserver from 'src/util/fixedObserver';
 import initObserver from 'src/util/initObserver';
 import GalleryItem from './item';
+import getUrlKey from 'src/util/getUrlKey';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+
+const productDetailQuery = gql`
+    query productDetail($urlKey: String) {
+        productDetail: products(filter: { url_key: { eq: $urlKey } }) {
+            items {
+                sku
+                name
+                price {
+                    regularPrice {
+                        amount {
+                            currency
+                            value
+                        }
+                    }
+                }
+                description
+                media_gallery_entries {
+                    label
+                    position
+                    disabled
+                    file
+                }
+            }
+        }
+    }
+`;
 
 const pageSize = 12;
 const emptyData = Array.from({ length: pageSize }).fill(null);
@@ -10,7 +39,7 @@ const createCollection = initObserver(fixedObserver);
 
 // inline the placeholder elements, since they're constant
 const placeholders = emptyData.map((_, index) => (
-    <GalleryItem key={index} placeholder={true} />
+    <GalleryItem placeholder={true} />
 ));
 
 // initialize the state with a one-page observer, `collection`
@@ -63,15 +92,31 @@ class GalleryItems extends Component {
             return placeholders;
         }
 
-        return items.map(item => (
-            <GalleryItem
-                key={item.id}
-                item={item}
-                showImage={done}
-                onLoad={this.handleLoad}
-                onError={this.handleError}
-            />
-        ));
+        return (
+            <Query
+                query={productDetailQuery}
+                variables={{ urlKey: 'joust-duffle-bag' }}
+            >
+                {({ loading, error, data }) => {
+                    if (error) return <div>Data Fetch Error</div>;
+                    if (loading) return <div>Fetching Data</div>;
+
+                    const product = data.productDetail.items[0];
+
+                    return items.map(item => (
+                            <GalleryItem
+                            product={product}
+                            key={item.id}
+                            item={item}
+                            showImage={done}
+                            onLoad={this.handleLoad}
+                            onError={this.handleError}
+                            addToCart={this.props.addToCart}
+                            />
+                        ));
+                }}
+            </Query>
+        );
     }
 
     handleLoad = key => {

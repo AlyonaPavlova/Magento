@@ -1210,6 +1210,7 @@ select option
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
+	background-image:url(images/banner_background.jpg);
 }
 .banner_content
 {

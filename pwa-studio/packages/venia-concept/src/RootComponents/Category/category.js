@@ -6,6 +6,11 @@ import classify from 'src/classify';
 import Gallery from 'src/components/Gallery';
 import Page from 'src/components/Page';
 import defaultClasses from './category.css';
+import { addItemToCart } from 'src/actions/cart';
+import { connect } from 'react-redux';
+
+import tabs from 'src/components/Content/featured/tabs';
+import slider from 'src/components/Content/featured/slider';
 
 const categoryQuery = gql`
     query category($id: Int!) {
@@ -49,39 +54,38 @@ class Category extends Component {
         id: 3
     };
 
+    addToCart = async (item, quantity) => {
+        const { guestCartId } = this.props;
+        await this.props.addItemToCart({ guestCartId, item, quantity });
+    };
+
     render() {
         const { id, classes } = this.props;
 
         return (
-            <Page>
-                <Query query={categoryQuery} variables={{ id }}>
-                    {({ loading, error, data }) => {
-                        if (error) return <div>Data Fetch Error</div>;
-                        if (loading) return <div>Fetching Data</div>;
+            <Query query={categoryQuery} variables={{ id }}>
+                {({ loading, error, data }) => {
+                    if (error) return <div>Data Fetch Error</div>;
+                    if (loading) return <div>Fetching Data</div>;
 
-                        return (
-                            <article className={classes.root}>
-                                <h1 className={classes.title}>
-                                    {/* TODO: Switch to RichContent component from Peregrine when merged */}
-                                    <span
-                                        dangerouslySetInnerHTML={{
-                                            __html: data.category.description
-                                        }}
-                                    />
-                                </h1>
-                                <section className={classes.gallery}>
-                                    <Gallery
-                                        data={data.category.products.items}
-                                        title={data.category.description}
-                                    />
-                                </section>
-                            </article>
-                        );
-                    }}
-                </Query>
-            </Page>
+                    return (
+                        <Gallery
+                            data={data.category.products.items}
+                            title={data.category.description}
+                            addToCart={this.props.addItemToCart}
+                        />
+                    );
+                }}
+            </Query>
         );
     }
 }
 
-export default classify(defaultClasses)(Category);
+const mapDispatchToProps = {
+    addItemToCart
+};
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Category);
